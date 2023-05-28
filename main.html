@@ -32,12 +32,12 @@
     </section>
     
     <section id="countdown-section">
-      <div class="container">
-        <div class="countdown-container">
-          <h2 class="countdown-title">Час з визначної події</h2>
-          <div class="countdown-timer" id="countdown"></div>
-        </div>
-      </div>
+    	<div class="container">
+    		<div class="countdown-container">
+    			<h2 class="countdown-title">Час з визначної події</h2>
+    			<div class="countdown-timer" id="countdown"></div>
+    		</div>
+    	</div>
     </section>
     
     <section id="schedule">
@@ -99,34 +99,13 @@
             <p>KPI CyberSport &copy; 2023</p>
         </div>
     </footer>
-
+	
     <button id="backToTop" title="Go to top">Top</button>
 
     <script>
-        // Get the button element
-        var backToTopBtn = document.getElementById("backToTop");
-
-        // Add a click event listener to scroll to the top when clicked
-        backToTopBtn.addEventListener("click", function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-
-        // Show or hide the button based on the scroll position
-        window.addEventListener("scroll", function() {
-            if (window.pageYOffset > 10){
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        });
-    </script>
-<<script>
-      window.addEventListener("resize", function() {
+    	window.addEventListener("resize", function() {
             var countdownSection = document.getElementById("countdown-section");
-            var windowWidth = window.innerWidth  document.documentElement.clientWidth  document.body.clientWidth;
+            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
             if (windowWidth >= 768) {
                 countdownSection.style.display = "block";
@@ -188,74 +167,27 @@ var start = startDate;
         }
 
         updateCountdown();
+
+	 // Get the button element
+        var backToTopBtn = document.getElementById("backToTop");
+
+        // Add a click event listener to scroll to the top when clicked
+        backToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Show or hide the button based on the scroll position
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 10){
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
     </script>
-    <script>
-        window.addEventListener("resize", function() {
-              var countdownSection = document.getElementById("countdown-section");
-              var windowWidth = window.innerWidth  
-              document.documentElement.clientWidth  
-              document.body.clientWidth;
-  
-              if (windowWidth >= 768) {
-                  countdownSection.style.display = "block";
-              } else {
-                  countdownSection.style.display = "none";
-              }
-          });
-  
-          function calculateTimeRemaining() {
-              var startDate = new Date(1939, 8, 1);
-              var currentDate = new Date();
-              var timeRemaining =currentDate - startDate ;
-  
-  
-  var start = startDate;
-    var end = currentDate;
-  
-    var yearsDiff = end.getFullYear() - start.getFullYear();
-    var monthsDiff = end.getMonth() - start.getMonth();
-    var daysDiff = end.getDate() - start.getDate();
-  
-    if (monthsDiff < 0 || (monthsDiff === 0 && daysDiff < 0)) {
-      yearsDiff--;
-      monthsDiff += 12;
-    }
-  
-    if (daysDiff < 0) {
-      var lastMonthDate = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
-      daysDiff = lastMonthDate - start.getDate() + end.getDate();
-      monthsDiff--;
-    }
-              var seconds = Math.floor((timeRemaining / 1000) % 60);
-              var minutes = Math.floor((timeRemaining / 1000 / 60) % 60);
-              var hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-    
-  
-              return {
-                  'years': yearsDiff,
-                  'months': monthsDiff,
-                  'days': daysDiff,
-                  'hours': hours,
-                  'minutes': minutes,
-                  'seconds': seconds
-              };
-          }
-  
-          function updateCountdown() {
-              var countdownElement = document.getElementById("countdown");
-              var timeRemaining = calculateTimeRemaining();
-  
-              countdownElement.innerHTML = timeRemaining.years + " років," +
-                  timeRemaining.months + " місяців, " +
-                  timeRemaining.days + " днів, "+
-                  timeRemaining.hours + " годин, " +
-                  timeRemaining.minutes + " хвилин, " +
-                  timeRemaining.seconds + " секунд тому";
-  
-              setTimeout(updateCountdown, 1000);
-          }
-  
-          updateCountdown();
-      </script>
-  </body>
-  </html>
+</body>
+</html>

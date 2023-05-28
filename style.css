@@ -91,7 +91,7 @@ section li {
 section li h3 {
         margin-top: 0;
 }
-backToTop {
+#backToTop {
         display: none;
         position: fixed;
         bottom: 20px;
@@ -106,9 +106,25 @@ backToTop {
         padding: 15px;
         border-radius: 4px;
     }
-backToTop:hover {
+#backToTop:hover {
         background-color: #333;
     }
+.countdown-container {
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+  
+.countdown-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+  
+.countdown-timer {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
 footer {
         background-color: #333;
         color: #fff;
