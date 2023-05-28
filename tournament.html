@@ -38,7 +38,19 @@
                     <li>Кожна команда має право на один паузу в грі.</li>
                     <li>В разі невиконання правил турніру команда може бути дискваліфікована.</li>
                 </ul>
-                <a href="#" class="button">Приєднатися до турніру</a>
+		<button onclick="openPopupForm()", class="button">Приєднатися до турніру</button>
+
+                
+  <div id="popupForm" class="popup-form">
+    <h2>Заповніть форму</h2>
+    <form onsubmit="submitForm(event)">
+      <input type="text" id="name" placeholder="Ім'я учасника" required>
+      <input type="email" id="email" placeholder="Електронна пошта" required>
+      <input type="tel" id="phone" placeholder="Номер телефону" required>
+      <input type="submit" value="Відправити заявку">
+      <button type="button" onclick="closePopupForm()">Закрити вікно</button>
+    </form>
+  </div>
             </div>
         </div>
     </section>
@@ -48,5 +60,53 @@
             <p>© 2023 KPI CyberSport</p>
         </div>
     </footer>
+<script>
+    // Function to open the popup form
+    function openPopupForm() {
+      var popupForm = document.getElementById("popupForm");
+      popupForm.style.display = "block";
+    }
+
+    // Function to close the popup form
+    function closePopupForm() {
+      var popupForm = document.getElementById("popupForm");
+      popupForm.style.display = "none";
+    }
+
+    // Function to submit the form
+    function submitForm(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form input values
+      var nameInput = document.getElementById("name");
+      var emailInput = document.getElementById("email");
+      var phoneInput = document.getElementById("phone");
+
+      // Validate email format using regular expression
+      var emailRegex = /^\S+@\S+\.\S+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        alert("Invalid email format");
+        return;
+      }
+
+      // Validate phone number format using regular expression
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phoneInput.value)) {
+        alert("Invalid phone number format");
+        return;
+      }
+
+      // Form submission logic...
+      // You can send the form data to a server or perform any desired actions here
+
+      // Reset form inputs
+      nameInput.value = "";
+      emailInput.value = "";
+      phoneInput.value = "";
+
+      // Close the popup form
+      closePopupForm();
+    }
+  </script>
 </body>
 </html>
